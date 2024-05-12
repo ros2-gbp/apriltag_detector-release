@@ -2,7 +2,7 @@
 Changelog for package apriltag_detector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.0.0 (2024-02-09)
+2.0.0 (2024-05-11)
 ------------------
-* initial release
+* initial release as base class of pluggable detectors
 * Contributors: Bernd Pfrommer
