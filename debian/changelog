@@ -1,0 +1,8 @@
+ros-rolling-apriltag-detector (2.0.0-1noble) noble; urgency=high
+
+  * initial release as base class of pluggable detectors
+  * Contributors: Bernd Pfrommer
+
+ -- Bernd Pfrommer <bernd.pfrommer@gmail.com>  Sat, 11 May 2024 04:00:00 -0000
+
+
