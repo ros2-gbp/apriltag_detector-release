@@ -1,5 +1,5 @@
 #
-# Copyright 2022 Bernd Pfrommer <bernd.pfrommer@gmail.com>
+# Copyright 2024 Bernd Pfrommer <bernd.pfrommer@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,17 +13,68 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.16)
 project(apriltag_detector)
 
-if(DEFINED ENV{ROS_VERSION})
-  if($ENV{ROS_VERSION} EQUAL "2")
-    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/ROS2.cmake)
-  elseif($ENV{ROS_VERSION} EQUAL "1")
-    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/ROS1.cmake)
-  else()
-    message(ERROR "invalid ROS_VERSION environment variable: $ENV{ROS_VERSION}")
-  endif()
-else()
-  message(ERROR "ROS_VERSION environment variable is not set!")
+add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+
+# find dependencies
+find_package(ament_cmake REQUIRED)
+find_package(apriltag_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
+
+#
+# --------- header-only library
+#
+add_library(${PROJECT_NAME} INTERFACE
+  include/apriltag_detector/detector.hpp)
+  ament_target_dependencies(${PROJECT_NAME} INTERFACE sensor_msgs apriltag_msgs)
+
+target_include_directories(
+  ${PROJECT_NAME}
+  INTERFACE
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>)
+
+ament_export_targets(${PROJECT_NAME}_export HAS_LIBRARY_TARGET)
+
+# the shared library goes into the global lib dir so it can
+# be used as a composable node by other projects
+
+install(
+  TARGETS ${PROJECT_NAME}
+  EXPORT ${PROJECT_NAME}_export
+  DESTINATION lib
+)
+
+install(
+  DIRECTORY include/
+  DESTINATION include
+)
+
+install(DIRECTORY
+  launch
+  DESTINATION share/${PROJECT_NAME}/
+  FILES_MATCHING PATTERN "*.py")
+
+
+if(BUILD_TESTING)
+  find_package(ament_cmake REQUIRED)
+  find_package(ament_cmake_copyright REQUIRED)
+  find_package(ament_cmake_cppcheck REQUIRED)
+  find_package(ament_cmake_cpplint REQUIRED)
+  find_package(ament_cmake_clang_format REQUIRED)
+  find_package(ament_cmake_lint_cmake REQUIRED)
+  find_package(ament_cmake_xmllint REQUIRED)
+
+  ament_copyright()
+  ament_cppcheck(LANGUAGE c++)
+  ament_cpplint(FILTERS "-build/include,-runtime/indentation_namespace")
+  ament_clang_format(CONFIG_FILE .clang-format)
+  ament_lint_cmake()
+  ament_xmllint()
 endif()
+
+ament_package()
+
+
