@@ -1,0 +1,12 @@
+Source: ros-humble-apriltag-detector-mit
+Section: misc
+Priority: optional
+Maintainer: Bernd Pfrommer <bernd.pfrommer@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-humble-ament-cmake, ros-humble-ament-cmake-auto, ros-humble-ament-cmake-clang-format <!nocheck>, ros-humble-ament-cmake-ros, ros-humble-ament-lint-auto <!nocheck>, ros-humble-ament-lint-common <!nocheck>, ros-humble-apriltag-detector, ros-humble-apriltag-mit, ros-humble-apriltag-msgs, ros-humble-cv-bridge, ros-humble-image-transport, ros-humble-pluginlib, ros-humble-rclcpp, ros-humble-rclcpp-components, ros-humble-ros-environment, ros-humble-sensor-msgs, ros-humble-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-humble-apriltag-detector-mit
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-humble-apriltag-detector, ros-humble-apriltag-mit, ros-humble-apriltag-msgs, ros-humble-cv-bridge, ros-humble-image-transport, ros-humble-pluginlib, ros-humble-rclcpp, ros-humble-rclcpp-components, ros-humble-sensor-msgs, ros-humble-ros-workspace
+Description: ROS package for apriltag detection with MIT detector
