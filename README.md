@@ -1,38 +1,46 @@
-# ROS MIT Apriltag detector package
+# ROS Apriltag Detector
 
-This repository has ROS2 components for detecting Apriltags using the
-[MIT apriltag library implementation](https://people.csail.mit.edu/kaess/apriltags).
+![banner image](images/apriltags.png)
 
-Note that this package also provides a plugin that works with [pluginlib](https://github.com/ros/pluginlib/tree/ros2), meaning you can load this detector directly into your code without going through a ROS2 component.
+This repository holds the following ROS2 packages for detecting and displaying [Apriltags](https://april.eecs.umich.edu/software/apriltag):
 
-For more documentation on how to install and use this component, refer to the documentation
-of the [apriltag_detector](https://github.com/ros-misc-utilities/apriltag_detector) package.
+  - [apriltag_detector](./apriltag_detector/README.md): base class definitions for plugable detector libraries,
+    launch files for detecting and displaying apriltags. This is the package typically used.
 
-## Components
+  The following packages are accessed mostly through the above [apriltag_detector](./apriltag_detector/README.md) package.
 
-### apriltag_detector_mit::Component
+  - [apriltag_draw](./apriltag_draw/README.md): components for drawing detected Apriltags onto images.
+  - [apriltag_umich](./apriltag_detector_umich/README.md): plugable library and component for detecting Apriltags using the
+    UMich implementation.
+  - [apriltag_mit](./apriltag_detector_mit/README.md): plugable library and component for detecting Apriltags using the
+    MIT implementation.
 
-- Topics (subscribed, but ONLY when there is a subscriber to ``tags``):
+The software in this repository does strictly perception, *no camera pose estimation*!
+It is typically used when no camera calibration is available, or is not needed.
+If you want perception and camera pose together, use [this package](https://github.com/christianrauch/apriltag_ros),
+which uses the same tag message format.
 
-    - ``image``: image topic to use.
-    - ``tags``: the detected tags from the apriltag library.
+## Installation
 
-- Topics (published):
+### From packages
 
-    - ``tags``: tag detections.
+```
+apt install ros-${ROS_DISTRO}-apriltag-detector ros-${ROS_DISTRO}-apriltag-draw \
+            ros-${ROS_DISTRO}-apriltag-detector-umich ros-${ROS_DISTRO}-apriltag-detector-mit
+```
 
-- Parameters:
+### From source
 
-    - ``black_border_width``. Integer specifying the thickness of the black border (in bits).       Default: 1.
-    - ``image_qos_profile``: QoS profile for image subscription. Allowed values: ``default``,
-        ``sensor_data``.
-        Use this parameter to achieve QoS compatibility when subscribing to image data. Defaults to ``default``. 
-    - ``image_transport``: The type of image transport to use, e.g. ``compressed``. Default: `raw``.
-    - ``tag_family``: Apriltag family. Allowed values: ``tf16h5``, ``tf25h9``, ``tf36h11``.
-        Default: ``tf36h11``
+The build instructions follow the standard procedure for ROS2. Set the following shell variables:
+
+```bash
+repo=apriltag_detector
+url=https://github.com/ros-misc-utilities/${repo}.git
+```
+and follow the ROS2 build instructions [here](https://github.com/ros-misc-utilities/.github/blob/master/docs/build_ros_repository.md)
+
+Make sure to source your workspace's ``install/setup.bash`` afterwards.
 
 ## License
 
 This software is issued under the Apache License Version 2.0.
-Note that this package links against the [MIT apriltag detector](https://github.com/ros-misc-utilities/apriltag_mit) which is licensed under LGPLv2.1.
-
