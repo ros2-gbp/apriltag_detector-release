@@ -2,7 +2,12 @@
 Changelog for package apriltag_detector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2.1.0 (2024-05-11)
+1.1.1 (2024-03-02)
 ------------------
-* switched to plugins, added MIT detector, split off apriltag_draw
+* added missing dependency on ros_environment
+* Contributors: Bernd Pfrommer
+
+1.1.0 (2024-02-09)
+------------------
+* initial release
 * Contributors: Bernd Pfrommer

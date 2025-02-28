@@ -2,7 +2,7 @@
 Changelog for package apriltag_detector_mit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2.0.0 (2024-05-11)
+2.1.0 (2024-05-11)
 ------------------
-* initial release as plugin
+* initial release of detector plugin
 * Contributors: Bernd Pfrommer
