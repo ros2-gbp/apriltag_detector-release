@@ -1,0 +1,12 @@
+Source: ros-jazzy-apriltag-draw
+Section: misc
+Priority: optional
+Maintainer: Bernd Pfrommer <bernd.pfrommer@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-jazzy-ament-cmake, ros-jazzy-ament-cmake-clang-format <!nocheck>, ros-jazzy-ament-lint-auto <!nocheck>, ros-jazzy-ament-lint-common <!nocheck>, ros-jazzy-apriltag-msgs, ros-jazzy-cv-bridge, ros-jazzy-image-transport, ros-jazzy-rclcpp, ros-jazzy-rclcpp-components, ros-jazzy-ros-environment, ros-jazzy-sensor-msgs, ros-jazzy-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-apriltag-draw
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jazzy-apriltag-msgs, ros-jazzy-cv-bridge, ros-jazzy-image-transport, ros-jazzy-rclcpp, ros-jazzy-rclcpp-components, ros-jazzy-sensor-msgs, ros-jazzy-ros-workspace
+Description: ROS package for drawing apriltags on image
