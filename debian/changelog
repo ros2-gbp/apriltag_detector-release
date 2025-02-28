@@ -1,8 +1,0 @@
-ros-humble-apriltag-detector-mit (2.1.0-1jammy) jammy; urgency=high
-
-  * initial release of detector plugin
-  * Contributors: Bernd Pfrommer
-
- -- Bernd Pfrommer <bernd.pfrommer@gmail.com>  Sat, 11 May 2024 04:00:00 -0000
-
-
