@@ -1,0 +1,27 @@
+ros-jazzy-apriltag-detector-mit (3.0.1-1bookworm) bookworm; urgency=high
+
+
+
+ -- Bernd Pfrommer <bernd.pfrommer@gmail.com>  Fri, 28 Feb 2025 05:00:00 -0000
+
+ros-jazzy-apriltag-detector-mit (3.0.0-1bookworm) bookworm; urgency=high
+
+  * clean up apriltag_detector packages. Detector component is now in apriltag_detector.
+  * Contributors: Bernd Pfrommer
+
+ -- Bernd Pfrommer <bernd.pfrommer@gmail.com>  Fri, 28 Feb 2025 05:00:00 -0000
+
+ros-jazzy-apriltag-detector-mit (2.0.1-1bookworm) bookworm; urgency=high
+
+
+
+ -- Bernd Pfrommer <bernd.pfrommer@gmail.com>  Thu, 26 Sep 2024 04:00:00 -0000
+
+ros-jazzy-apriltag-detector-mit (2.0.0-1bookworm) bookworm; urgency=high
+
+  * initial release as plugin
+  * Contributors: Bernd Pfrommer
+
+ -- Bernd Pfrommer <bernd.pfrommer@gmail.com>  Sat, 11 May 2024 04:00:00 -0000
+
+
