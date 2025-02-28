@@ -1,61 +1,45 @@
-# ROS Apriltag drawing package
+# ROS Apriltag Detector
 
-This repository has a ROS2 component for drawing apriltags onto an image. You will find this package handy
-when trouble shooting apriltag detection problems. The node in this package is usually launched
-from a launch file in the [apriltag_detector](https://github.com/ros-misc-utilities/apriltag_detector) package.
-Refer there for more information.
+![banner image](images/apriltags.png)
 
-## Components
+This repository holds the following ROS2 packages for detecting and displaying [Apriltags](https://april.eecs.umich.edu/software/apriltag):
 
-### apriltag\_draw::ApriltagDraw
+  - [apriltag_detector](./apriltag_detector/README.md): base class definitions for plugable detector libraries,
+    launch files for detecting and displaying apriltags. This is the package typically used.
 
-- Topics (subscribed):
-    - ``tags``: the detected tags from the apriltag library.
-    - ``image``: the image from which the tags were detected. Must be synced with ``tags``, i.e.
-      identical header time stamps in both streams.
+  The following packages are accessed mostly through the above [apriltag_detector](./apriltag_detector/README.md) package.
 
-- Topics (published):
-    - ``image_tags``: image with the tags drawn onto
+  - [apriltag_draw](./apriltag_draw/README.md): components for drawing detected Apriltags onto images.
+  - [apriltag_umich](./apriltag_detector_umich/README.md): plugable library and component for detecting Apriltags using the
+    UMich implementation.
+  - [apriltag_mit](./apriltag_detector_mit/README.md): plugable library and component for detecting Apriltags using the
+    MIT implementation.
 
-- Parameters:
-    - ``image_transport``: What image transport to use (default ``raw``)
-    - ``qos_profile``: What profile to use for subscribing to images. Allowed are ``sensor_data``
-      and ``default``. Default ``default``.
-    - ``max_queue_size``: How many images or tag detections to keep. Default: 200.
+The software in this repository does strictly perception, *no camera pose estimation*!
+It is typically used when no camera calibration is available, or is not needed.
+If you want perception and camera pose together, use [this package](https://github.com/christianrauch/apriltag_ros),
+which uses the same tag message format.
 
+## Installation
 
-## Launch files
-
-### draw.launch.py
-
-Arguments:
-  - ``camera``: name of the camera, e.g. ``/camera_0``. Default: ``camera``.
-  - ``image``: name of the image underneath the camera node, e.g. ``image_raw``. The node
-      will then subscribe to images ``/camera_name/image_raw``. Default: ``image_raw``.
-  - ``image_transport``: the transport to use, e.g. ``compressed``, ``ffmpeg`` etc. Default: ``raw``.
-
-### composable.launch.py
-
-This launch script has identical arguments to ``draw.launch.py``, but is implemented as a composable
-node for illustration purposes.
-
-## Example usage
+### From packages
 
 ```
-ros2 launch apriltag_draw draw.launch.py  image_transport:=ffmpeg camera:=/cam_sync/cam3
+apt install ros-${ROS_DISTRO}-apriltag-detector ros-${ROS_DISTRO}-apriltag-draw \
+            ros-${ROS_DISTRO}-apriltag-detector-umich ros-${ROS_DISTRO}-apriltag-detector-mit
 ```
 
-Will create a node using the compressed ffmpeg image transport, using the following topics,
-and publishing an image under ``/cam_sync/cam3/tags``.
+### From source
 
+The build instructions follow the standard procedure for ROS2. Set the following shell variables:
+
+```bash
+repo=apriltag_detector
+url=https://github.com/ros-misc-utilities/${repo}.git
 ```
- Subscribers:
-    /cam_sync/cam3/image_raw/ffmpeg: ffmpeg_image_transport_msgs/msg/FFMPEGPacket
-    /cam_sync/cam3/tags: apriltag_msgs/msg/AprilTagDetectionArray
-  Publishers:
-    /cam_sync/cam3/image_tags: sensor_msgs/msg/Image
-    /cam_sync/cam3/image_tags/ffmpeg: ffmpeg_image_transport_msgs/msg/FFMPEGPacket
-```
+and follow the ROS2 build instructions [here](https://github.com/ros-misc-utilities/.github/blob/master/docs/build_ros_repository.md)
+
+Make sure to source your workspace's ``install/setup.bash`` afterwards.
 
 ## License
 
