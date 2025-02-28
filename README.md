@@ -1,45 +1,23 @@
-# ROS Apriltag Detector
+# ROS2 Apriltag tools package
 
-![banner image](images/apriltags.png)
+This repository has a ROS2 tools for image processing related to AprilTags. For more about AprilTag detection under ROS2, see the [apriltag_detector package](https://github.com/ros-misc-utilities/apriltag_detector).
 
-This repository holds the following ROS2 packages for detecting and displaying [Apriltags](https://april.eecs.umich.edu/software/apriltag):
 
-  - [apriltag_detector](./apriltag_detector/README.md): base class definitions for 
-    plugable detector libraries, node, composable component, and
-    launch files for detecting and displaying apriltags. This is the package typically used.
+## Nodes
 
-  The following packages are accessed mostly through the above [apriltag_detector](./apriltag_detector/README.md) package.
+### detect\_from\_bag
 
-  - [apriltag_draw](./apriltag_draw/README.md): components for drawing detected Apriltags onto images.
-  - [apriltag_umich](./apriltag_detector_umich/README.md): provides plugin for
-    running the UMich tag detector.
-  - [apriltag_mit](./apriltag_detector_mit/README.md): provides plugin for runninng the MIT tag detector.
+This node runs an apriltag detector on a bag with images and produces an output bag that has the original bag content plus the apriltag detections and debug images.
 
-The software in this repository does strictly perception, *no camera pose estimation*!
-It is typically used when no camera calibration is available, or is not needed.
-If you want perception and camera pose together, use [this package](https://github.com/christianrauch/apriltag_ros),
-which uses the same tag message format.
+- Parameters:
+    - ``in_bag``: path of input bag
+    - ``image_topic``: name of image topic on which to run the AprilTag detector
+    - ``out_bag``: path of output bag
 
-## Installation
-
-### From packages
-
-```
-apt install ros-${ROS_DISTRO}-apriltag-detector ros-${ROS_DISTRO}-apriltag-draw \
-            ros-${ROS_DISTRO}-apriltag-detector-umich ros-${ROS_DISTRO}-apriltag-detector-mit
-```
-
-### From source
-
-The build instructions follow the standard procedure for ROS2. Set the following shell variables:
-
+Example:
 ```bash
-repo=apriltag_detector
-url=https://github.com/ros-misc-utilities/${repo}.git
+ros2 run apriltag_tools detect_from_bag --ros-args -p "in_bag:=./input_bag" -p "image_topic:=/camera/image_raw" -p "out_bag:=./output_bag"
 ```
-and follow the ROS2 build instructions [here](https://github.com/ros-misc-utilities/.github/blob/master/docs/build_ros_repository.md)
-
-Make sure to source your workspace's ``install/setup.bash`` afterwards.
 
 ## License
 
