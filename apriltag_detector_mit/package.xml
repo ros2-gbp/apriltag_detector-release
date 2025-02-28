@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="3">
   <name>apriltag_detector_mit</name>
-  <version>2.0.0</version>
+  <version>3.0.1</version>
   <description>ROS package for apriltag detection with MIT detector</description>
   <maintainer email="bernd.pfrommer@gmail.com">Bernd Pfrommer</maintainer>
   <license>Apache2</license>
@@ -9,13 +9,11 @@
   <buildtool_depend>ament_cmake</buildtool_depend>
   <buildtool_depend>ament_cmake_ros</buildtool_depend>
   <buildtool_depend>ament_cmake_auto</buildtool_depend>
-  <buildtool_depend>ros_environment</buildtool_depend> <!-- ROS_VERSION + ROS_DISTRO -->
+  <buildtool_depend>ros_environment</buildtool_depend>  <!-- ROS_VERSION + ROS_DISTRO -->
 
   <depend>apriltag_detector</depend>
-  <depend>apriltag_mit</depend> <!-- the mit apriltag library -->
+  <depend>apriltag_mit</depend>  <!-- the mit apriltag library -->
   <depend>apriltag_msgs</depend>
-  <depend>cv_bridge</depend>
-  <depend>image_transport</depend>
   <depend>pluginlib</depend>
   <depend>rclcpp</depend>
   <depend>rclcpp_components</depend>
