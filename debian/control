@@ -1,0 +1,12 @@
+Source: ros-jazzy-apriltag-tools
+Section: misc
+Priority: optional
+Maintainer: Bernd Pfrommer <bernd.pfrommer@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-jazzy-ament-cmake, ros-jazzy-ament-cmake-clang-format <!nocheck>, ros-jazzy-ament-lint-auto <!nocheck>, ros-jazzy-ament-lint-common <!nocheck>, ros-jazzy-apriltag-detector, ros-jazzy-apriltag-draw, ros-jazzy-apriltag-msgs, ros-jazzy-rclcpp, ros-jazzy-ros-environment, ros-jazzy-rosbag2-transport, ros-jazzy-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-apriltag-tools
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jazzy-apriltag-detector, ros-jazzy-apriltag-draw, ros-jazzy-apriltag-msgs, ros-jazzy-rclcpp, ros-jazzy-rosbag2-transport, ros-jazzy-ros-workspace
+Description: misc tools for working with apriltags under ROS2
