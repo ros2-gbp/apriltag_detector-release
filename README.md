@@ -1,45 +1,58 @@
-# ROS Apriltag Detector
+# ROS Apriltag detector package
 
-![banner image](images/apriltags.png)
+This package has the base class header files for apriltag detector plugins
+for the [UMich](../apriltag_detector_umich/README.md) and the
+[MIT](../apriltag_detector_mit/README.md) detector.
 
-This repository holds the following ROS2 packages for detecting and displaying [Apriltags](https://april.eecs.umich.edu/software/apriltag):
+It also has launch files for both of these detectors, so by installing this package
+you can use both of these detectors interchangeably. Note that UMich detector is more sensitive and faster, but it does not work when tags are encroached by black markers or have double-wide black borders (Kalibr boards!). The MIT detector must be used in the latter situation.
 
-  - [apriltag_detector](./apriltag_detector/README.md): base class definitions for plugable detector libraries,
-    launch files for detecting and displaying apriltags. This is the package typically used.
+For more documentation on how to install this package refer to the documentation
+of the [apriltag_detector](https://github.com/ros-misc-utilities/apriltag_detector) repository.
 
-  The following packages are accessed mostly through the above [apriltag_detector](./apriltag_detector/README.md) package.
+NOTE: Because running an apriltag detector is a heavy weight operation, the detector is very frugal about subscribing to image topics. Unless you bring up e.g. an image viewer to connect to the debug images, the detector will just sit there and do nothing.
 
-  - [apriltag_draw](./apriltag_draw/README.md): components for drawing detected Apriltags onto images.
-  - [apriltag_umich](./apriltag_detector_umich/README.md): plugable library and component for detecting Apriltags using the
-    UMich implementation.
-  - [apriltag_mit](./apriltag_detector_mit/README.md): plugable library and component for detecting Apriltags using the
-    MIT implementation.
+## Launch files
 
-The software in this repository does strictly perception, *no camera pose estimation*!
-It is typically used when no camera calibration is available, or is not needed.
-If you want perception and camera pose together, use [this package](https://github.com/christianrauch/apriltag_ros),
-which uses the same tag message format.
+### detect.launch.py
 
-## Installation
+This convenience launch file launches both a detector and a [draw node](../apriltag_draw/README.md) for easy viewing of the tags.
 
-### From packages
+Arguments:
+  - ``black_border_width``: (only for MIT). Width (in bits) of the outer black border of
+    the apriltags. Note that Kalibr board tags often have border width of 2 bits. Default: 1.
+  - ``blur``: (only for UMich). Gaussian blur sigma (in pixels). Default: 0 (no blur).
+  - ``camera``: name of the camera, e.g. ``/camera_0``. Default: ``camera``.
+  - ``image``: name of the image underneath the camera node, e.g. ``image_raw``. The node
+      will then subscribe to images ``/camera_name/image_raw``. Default: ``image_raw``.
+  - ``image_transport``: the transport to use, e.g. ``compressed``, ``ffmpeg`` etc.
+    Default: ``raw``.
+  - ``max_allowed_hamming_distance``: (only for UMich) when more than this number of bits are different from a proper code, disregard the tag. Default: 0 (perfect match required).
+    Default: ``raw``.
+  - ``tags``: The topic name under which to publish the tags. Default: ``tags``.
+  - ``type``: What type of detector to use. Valid are ``mit``, ``umich``. Default: ``umich``.
+
+
+## Example usage
+
+Start detector and drawing node:
 
 ```
-apt install ros-${ROS_DISTRO}-apriltag-detector ros-${ROS_DISTRO}-apriltag-draw \
-            ros-${ROS_DISTRO}-apriltag-detector-umich ros-${ROS_DISTRO}-apriltag-detector-mit
+ros2 launch apriltag_detector.launch.py camera:=/cam_sync/cam_0
 ```
 
-### From source
+Now you have to start a camera server that publishes images under ``/cam_sync/cam_0/image_raw``, or play such data from a bag.
 
-The build instructions follow the standard procedure for ROS2. Set the following shell variables:
+For the detector to do anything you also have to subscribe to one of its output topics, for instance with ``rqt_image_view``:
 
-```bash
-repo=apriltag_detector
-url=https://github.com/ros-misc-utilities/${repo}.git
 ```
-and follow the ROS2 build instructions [here](https://github.com/ros-misc-utilities/.github/blob/master/docs/build_ros_repository.md)
+ros2 run rqt_image_view rqt_image_view /cam_sync/cam_0/image_tags
+```
 
-Make sure to source your workspace's ``install/setup.bash`` afterwards.
+Alternatively you can look at the decode tag rate:
+```
+ros2 topic hz /cam_sync/cam_0/tags
+```
 
 ## License
 
