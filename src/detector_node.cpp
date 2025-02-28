@@ -1,5 +1,5 @@
 // -*-c++-*---------------------------------------------------------------------------------------
-// Copyright 2022 Bernd Pfrommer <bernd.pfrommer@gmail.com>
+// Copyright 2024 Bernd Pfrommer <bernd.pfrommer@gmail.com>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,31 +13,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <nodelet/nodelet.h>
-#include <ros/ros.h>
-
+#include <apriltag_detector/detector_component.hpp>
 #include <memory>
+#include <rclcpp/rclcpp.hpp>
 
-#include "apriltag_detector/apriltag_detector_ros1.hpp"
-
-namespace apriltag_detector
+int main(int argc, char ** argv)
 {
-class ApriltagDetectorNodelet : public nodelet::Nodelet
-{
-public:
-  void onInit() override
-  {
-    nh_ = getPrivateNodeHandle();
-    node_ = std::make_shared<ApriltagDetector>(nh_);
-  }
-
-private:
-  // ------ variables --------
-  std::shared_ptr<ApriltagDetector> node_;
-  ros::NodeHandle nh_;
-};
-}  // namespace apriltag_detector
-
-#include <pluginlib/class_list_macros.h>
-PLUGINLIB_EXPORT_CLASS(
-  apriltag_detector::ApriltagDetectorNodelet, nodelet::Nodelet)
+  rclcpp::init(argc, argv);
+  auto node = std::make_shared<apriltag_detector::DetectorComponent>(
+    rclcpp::NodeOptions());
+  rclcpp::spin(node);  // should not return
+  rclcpp::shutdown();
+  return 0;
+}
