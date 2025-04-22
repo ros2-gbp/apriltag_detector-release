@@ -1,0 +1,12 @@
+Source: ros-kilted-apriltag-detector-mit
+Section: misc
+Priority: optional
+Maintainer: Bernd Pfrommer <bernd.pfrommer@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-kilted-ament-cmake, ros-kilted-ament-cmake-auto, ros-kilted-ament-cmake-clang-format <!nocheck>, ros-kilted-ament-cmake-ros, ros-kilted-ament-lint-auto <!nocheck>, ros-kilted-ament-lint-common <!nocheck>, ros-kilted-apriltag-detector, ros-kilted-apriltag-mit, ros-kilted-apriltag-msgs, ros-kilted-pluginlib, ros-kilted-rclcpp, ros-kilted-rclcpp-components, ros-kilted-ros-environment, ros-kilted-sensor-msgs, ros-kilted-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-kilted-apriltag-detector-mit
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kilted-apriltag-detector, ros-kilted-apriltag-mit, ros-kilted-apriltag-msgs, ros-kilted-pluginlib, ros-kilted-rclcpp, ros-kilted-rclcpp-components, ros-kilted-sensor-msgs, ros-kilted-ros-workspace
+Description: ROS package for apriltag detection with MIT detector
