@@ -1,0 +1,12 @@
+Source: ros-humble-apriltag-tools
+Section: misc
+Priority: optional
+Maintainer: Bernd Pfrommer <bernd.pfrommer@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-humble-ament-cmake, ros-humble-ament-cmake-clang-format <!nocheck>, ros-humble-ament-lint-auto <!nocheck>, ros-humble-ament-lint-common <!nocheck>, ros-humble-apriltag-detector, ros-humble-apriltag-draw, ros-humble-apriltag-msgs, ros-humble-rclcpp, ros-humble-ros-environment, ros-humble-rosbag2-transport, ros-humble-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-humble-apriltag-tools
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-humble-apriltag-detector, ros-humble-apriltag-draw, ros-humble-apriltag-msgs, ros-humble-rclcpp, ros-humble-rosbag2-transport, ros-humble-ros-workspace
+Description: misc tools for working with apriltags under ROS2
