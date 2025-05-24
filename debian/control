@@ -1,0 +1,12 @@
+Source: ros-jazzy-apriltag-detector-umich
+Section: misc
+Priority: optional
+Maintainer: Bernd Pfrommer <bernd.pfrommer@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libopencv-dev, ros-jazzy-ament-cmake, ros-jazzy-ament-cmake-auto, ros-jazzy-ament-cmake-clang-format <!nocheck>, ros-jazzy-ament-cmake-ros, ros-jazzy-ament-lint-auto <!nocheck>, ros-jazzy-ament-lint-common <!nocheck>, ros-jazzy-apriltag, ros-jazzy-apriltag-detector, ros-jazzy-apriltag-msgs, ros-jazzy-pluginlib, ros-jazzy-rclcpp, ros-jazzy-ros-environment, ros-jazzy-sensor-msgs, ros-jazzy-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-apriltag-detector-umich
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libopencv-dev, ros-jazzy-apriltag, ros-jazzy-apriltag-detector, ros-jazzy-apriltag-msgs, ros-jazzy-pluginlib, ros-jazzy-rclcpp, ros-jazzy-sensor-msgs, ros-jazzy-ros-workspace
+Description: ROS package for apriltag detection with the UMich detector
