@@ -1,0 +1,33 @@
+ros-humble-apriltag-tools (3.0.3-1jammy) jammy; urgency=high
+
+  * Merge branch 'master' into release
+  * Fix compilation and loading of shared libraries on Windows
+    * Fix compilation and running on Windows
+    ---------
+    Co-authored-by: Bernd Pfrommer <mailto:bernd.pfrommer@gmail.com>
+  * Contributors: Bernd Pfrommer, Silvio Traversaro
+
+ -- Bernd Pfrommer <bernd.pfrommer@gmail.com>  Tue, 29 Jul 2025 04:00:00 -0000
+
+ros-humble-apriltag-tools (3.0.2-1jammy) jammy; urgency=high
+
+  * no longer use ament_target_dependencies
+  * Contributors: Bernd Pfrommer
+
+ -- Bernd Pfrommer <bernd.pfrommer@gmail.com>  Sat, 24 May 2025 04:00:00 -0000
+
+ros-humble-apriltag-tools (3.0.1-1jammy) jammy; urgency=high
+
+  * removed unnecessary pluginlib dependency
+  * Contributors: Bernd Pfrommer
+
+ -- Bernd Pfrommer <bernd.pfrommer@gmail.com>  Fri, 28 Feb 2025 05:00:00 -0000
+
+ros-humble-apriltag-tools (3.0.0-1jammy) jammy; urgency=high
+
+  * initial commit
+  * Contributors: Bernd Pfrommer
+
+ -- Bernd Pfrommer <bernd.pfrommer@gmail.com>  Fri, 28 Feb 2025 05:00:00 -0000
+
+
