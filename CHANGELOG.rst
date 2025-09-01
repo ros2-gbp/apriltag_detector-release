@@ -2,6 +2,11 @@
 Changelog for package apriltag_draw
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+3.0.4 (2025-09-01)
+------------------
+* support new image transport node interface
+* Contributors: Bernd Pfrommer
+
 3.0.3 (2025-07-29)
 ------------------
 * avoid deprecated image transport functions
