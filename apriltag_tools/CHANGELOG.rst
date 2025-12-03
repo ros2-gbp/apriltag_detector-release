@@ -2,6 +2,9 @@
 Changelog for package apriltag_tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+3.1.0 (2025-12-03)
+------------------
+
 3.0.4 (2025-09-01)
 ------------------
 * add tag_topic and image_tag_topic parameters
