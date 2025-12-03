@@ -1,0 +1,59 @@
+ros-jazzy-apriltag-detector-umich (3.1.0-1bookworm) bookworm; urgency=high
+
+  * fix install destinations for libraries
+  * Contributors: Bernd Pfrommer
+
+ -- Bernd Pfrommer <bernd.pfrommer@gmail.com>  Wed, 03 Dec 2025 05:00:00 -0000
+
+ros-jazzy-apriltag-detector-umich (3.0.4-1bookworm) bookworm; urgency=high
+
+
+
+ -- Bernd Pfrommer <bernd.pfrommer@gmail.com>  Mon, 01 Sep 2025 04:00:00 -0000
+
+ros-jazzy-apriltag-detector-umich (3.0.3-1bookworm) bookworm; urgency=high
+
+  * Apriltag-detector-umich windows
+    See https://github.com/RoboStack/ros-jazzy/pull/77
+  * Fix compilation and loading of shared libraries on Windows
+    * Fix compilation and running on Windows
+    ---------
+    Co-authored-by: Bernd Pfrommer <mailto:bernd.pfrommer@gmail.com>
+  * Contributors: Bernd Pfrommer, Griffin Tabor, Silvio Traversaro
+
+ -- Bernd Pfrommer <bernd.pfrommer@gmail.com>  Tue, 29 Jul 2025 04:00:00 -0000
+
+ros-jazzy-apriltag-detector-umich (3.0.2-1bookworm) bookworm; urgency=high
+
+  * no longer use ament_target_dependencies
+  * Contributors: Bernd Pfrommer
+
+ -- Bernd Pfrommer <bernd.pfrommer@gmail.com>  Sat, 24 May 2025 04:00:00 -0000
+
+ros-jazzy-apriltag-detector-umich (3.0.1-1bookworm) bookworm; urgency=high
+
+
+
+ -- Bernd Pfrommer <bernd.pfrommer@gmail.com>  Fri, 28 Feb 2025 05:00:00 -0000
+
+ros-jazzy-apriltag-detector-umich (3.0.0-1bookworm) bookworm; urgency=high
+
+  * clean up apriltag_detector packages. Detector component is now in apriltag_detector
+  * Contributors: Bernd Pfrommer
+
+ -- Bernd Pfrommer <bernd.pfrommer@gmail.com>  Fri, 28 Feb 2025 05:00:00 -0000
+
+ros-jazzy-apriltag-detector-umich (2.0.1-1bookworm) bookworm; urgency=high
+
+
+
+ -- Bernd Pfrommer <bernd.pfrommer@gmail.com>  Thu, 26 Sep 2024 04:00:00 -0000
+
+ros-jazzy-apriltag-detector-umich (2.0.0-1bookworm) bookworm; urgency=high
+
+  * initial release as plugin
+  * Contributors: Bernd Pfrommer
+
+ -- Bernd Pfrommer <bernd.pfrommer@gmail.com>  Sat, 11 May 2024 04:00:00 -0000
+
+
