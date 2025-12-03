@@ -31,16 +31,16 @@ find_package(rclcpp)
 find_package(rclcpp_components)
 find_package(sensor_msgs REQUIRED)
 
-if(${cv_bridge_VERSION} VERSION_GREATER_EQUAL "4.0.0")
-  add_definitions(-DUSE_CV_BRIDGE_HPP)
-endif()
-
 if(${rclcpp_VERSION} VERSION_GREATER_EQUAL "28.0.0")
   add_definitions(-DUSE_MATCHED_EVENTS)
 endif()
 
 if(${image_transport_VERSION} VERSION_GREATER_EQUAL "6.3.0")
   add_definitions(-DIMAGE_TRANSPORT_USE_QOS)
+endif()
+
+if(${image_transport_VERSION} VERSION_GREATER_EQUAL "6.4.0")
+  add_definitions(-DIMAGE_TRANSPORT_USE_NODEINTERFACE)
 endif()
 
 #
@@ -88,7 +88,10 @@ ament_export_dependencies(sensor_msgs apriltag_msgs image_transport cv_bridge
 install(TARGETS
   ${PROJECT_NAME}
   ${PROJECT_NAME}_component
-  EXPORT ${PROJECT_NAME}_export)
+  EXPORT ${PROJECT_NAME}_export
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin)
 
 # the node must go into the project specific lib directory or else the launch
 # file will not find it
