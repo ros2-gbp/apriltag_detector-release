@@ -65,10 +65,7 @@ ament_export_libraries(${PROJECT_NAME})
 
 install(
   TARGETS ${PROJECT_NAME}
-  EXPORT ${PROJECT_NAME}_export
-  ARCHIVE DESTINATION lib
-  LIBRARY DESTINATION lib
-  RUNTIME DESTINATION bin)
+  EXPORT ${PROJECT_NAME}_export)
 
 if(BUILD_TESTING)
   find_package(ament_cmake REQUIRED)

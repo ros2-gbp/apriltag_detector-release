@@ -88,10 +88,7 @@ ament_export_dependencies(sensor_msgs apriltag_msgs image_transport cv_bridge
 install(TARGETS
   ${PROJECT_NAME}
   ${PROJECT_NAME}_component
-  EXPORT ${PROJECT_NAME}_export
-  ARCHIVE DESTINATION lib
-  LIBRARY DESTINATION lib
-  RUNTIME DESTINATION bin)
+  EXPORT ${PROJECT_NAME}_export)
 
 # the node must go into the project specific lib directory or else the launch
 # file will not find it
