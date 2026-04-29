@@ -1,1 +1,1 @@
-{"base": "7f004266f844", "parent": "debian/rolling/apriltag_detector", "previous": "315e6b3108a0", "trim": "", "trimbase": ""}
+{"base": "30526b5", "parent": "debian/lyrical/apriltag_detector", "previous": "67a0575", "trim": "", "trimbase": ""}
